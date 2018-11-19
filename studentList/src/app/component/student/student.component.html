@@ -1,0 +1,80 @@
+<div class="container" style="width: 50%">
+  <div class="row" style="margin-top: 18px;">
+          <button class="btn btn-primary" style="float:right;margin-left: 15px;margin-bottom: 5px;" (click)="AddNewStudent()">Add Student</button>
+  </div>
+<div class="table table-dark" style="width: 55%;padding: 0px 12px 0px 25px;">
+          <table>
+           <thead>
+            <tr>
+                <!-- <th>id</th> -->
+                <!-- <th>Student ID</th> -->
+                <th>Name</th>
+                <th>Number</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr *ngFor="let student of studentList">
+                <!-- <td>{{student.s_id}}</td> -->
+                <!-- <td>{{student.s_id}}</td> -->
+                <td>{{student.s_name}}</td>
+                <td>{{student.s_number}}</td>
+                <td>{{student.s_status}}</td>
+                <td><button class="btn btn-info" (click)="EditStudent(student.s_id)">Edit</button></td>
+                <!-- <button class="btn btn-info" (click)="DeleteStudent(studentt.s_id)">Delete</button></td>                         -->
+            </tr>
+           </tbody>
+          </table>                 
+  </div>
+</div>
+<!-- modal -->
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <!-- modal-dialog -->
+  <div class="modal-dialog" role="document">
+    <!-- modal-content -->
+    <div class="modal-content">
+      <!-- modal-header -->
+      <div class="modal-header">
+              <h2>{{frmTitle}}</h2>
+        <button type="button" class="close" aria-label="Close" (click)="closeModalDialog()"><span aria-hidden="true">&times;</span></button>
+  </div>
+      <!-- modal-body -->
+      <div class="modal-body" >
+        <form [formGroup]="addEditStudentForm" (ngSubmit) = "mdfLogin(addEditStudentForm.value)">
+            
+            <input type="hidden" name="s_id" formControlName="s_id"/>
+            <div>
+                <input type="text" *ngIf="!s_id ;else EditStudentCode"class="form-control" name="s_id" placeholder="Student Id" formControlName="s_id">
+                 <ng-template #EditStudentCode>
+                <input type="text" disabled class="form-control" name="s_id" placeholder="id" formControlName="s_id">
+              </ng-template>
+            </div>      
+            <div >
+                <input type="text" class="form-control" name="s_name" placeholder="Name" formControlName="s_name">
+            </div>
+            <div>
+                <input type="text" class="form-control" name="s_number" placeholder="Number" formControlName="s_number">
+            </div>
+            <div>
+                <select class="form-control" Placeholder="Status" name="s_status" formControlName="s_status"> 
+                          <option value="0" disabled  selected> Select Status </option>
+                        <option value="Pass">
+                                Pass
+                        </option>
+                        <option value="Fail">
+                                Fail
+                        </option>
+                </select>
+            </div> 
+          <div>
+               <input type="submit" class="btn btn-info" value="{{btnText}}" [disabled] = "!addEditStudentForm.valid">
+               <button type="button" class="btn btn-default" (click)="closeModalDialog()" style="margin-left: 10px;">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

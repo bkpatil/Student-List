@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+body {
+    padding-top: 54px;
+    background: #3fc74a;
+  }
+  
+  @media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+    }
+  }
+
+ @media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 3.5rem;
+        padding-left: 0.5rem;
+    }
+}
+header,section{
+margin-bottom: 20px;
+overflow: hidden;
+}
+section{
+    min-height:441px; 
+    padding: 5px;
+}
+
+.bg-dark {
+    background-color: #057f0a!important;
+    box-shadow: 0px 0px 10px 2px whitesmoke;
+}
+
+.container-fluid {
+    margin-top: 40px;
+    background: #4CAF50;
+}
+
+.carousel{ 
+box-shadow: 0px 0px 18px 4px;
+}
+
+.card-img {
+    box-shadow: 0px 0px 10px 2px green;
+}
+
+/* @media (min-width: 576px) {
+    .card-deck {
+        margin-bottom: 30px;
+    }
+} */
+
+.bg-secondary {
+    background-color: #3fc74a!important;
+}
+
+
